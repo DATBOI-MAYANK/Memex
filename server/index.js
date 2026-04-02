@@ -5,7 +5,7 @@ import { supabase } from "./lib/supabase.js";
 import { generateTags, generateEmbedding } from "./lib/ai.js";
 
 const app = express();
-app.use(cors({ origin: "http://localhost:5173" })); // Vite default port
+app.use(cors({ origin: ["http://localhost:5173", /^chrome-extension:\/\//] })); // Vite default port
 app.use(express.json());
 
 // Test route
@@ -51,6 +51,21 @@ app.get("/api/items", async (req, res) => {
     .from("items")
     .select("id, title, url, type, tags, content_text, created_at")
     .order("created_at", { ascending: false });
+
+  if (error) return res.status(500).json({ error: error.message });
+  res.json({ success: true, data });
+});
+
+app.get("/api/search", async (req, res) => {
+  const query = req.query.q;
+
+  const embedding = await generateEmbedding(query);
+
+  const { data, error } = await supabase.rpc("search_items", {
+    query_embedding: embedding,
+    match_threshold: 0.5,
+    match_count: 10,
+  });
 
   if (error) return res.status(500).json({ error: error.message });
   res.json({ success: true, data });
