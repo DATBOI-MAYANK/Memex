@@ -5,15 +5,7 @@ import { supabase } from "./lib/supabase.js";
 import { generateTags, generateEmbedding } from "./lib/ai.js";
 
 const app = express();
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://memex-beta.vercel.app/",
-      /^chrome-extension:\/\//,
-    ],
-  }),
-); // Vite default port
+app.use(cors()); // Vite default port
 app.use(express.json());
 
 // Test route
