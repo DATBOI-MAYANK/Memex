@@ -12,7 +12,7 @@ function Collection() {
       const res = await fetch(`${API_URL}/api/items`);
 
       const data = await res.json();
-      setItems(data.data.slice(0, 3));
+      setItems(data.data);
     };
     fetchItems();
   }, []);
