@@ -1,1 +1,35 @@
-@import "tailwindcss";
+body {
+    background-color: #000000;
+    width: 250px;
+    height: 200px;
+    color: #f3f0ef;
+}
+
+h1 {
+    margin-left: 34%;
+}
+.contianer > p {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#saveBtn {
+    background-color: #1c1b1b;
+    margin-left: 38%;
+    margin-top: 5%;
+    padding: 4px 15px;
+    border-radius: 8%;
+    border: none;
+    color: white;
+    font-size: large;
+}
+
+input {
+    background-color: yellow;
+    margin-top: 5%;
+    padding: 4px 15px;
+    border-radius: 8%;
+    border: none;
+    color: white;
+    font-size: large;
+}

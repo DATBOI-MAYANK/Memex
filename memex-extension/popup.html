@@ -5,12 +5,20 @@
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>memex saver</title>
-        <link href="/memex-extension/style.css" rel="stylesheet" />
+        <link href="./style.css" rel="stylesheet" />
     </head>
     <body>
-        <div classname="w-16">
+        <div class="contianer">
             <h1>Memex</h1>
-            <p>a extension to save you links etc to memex</p>
+            <p>Your second brain — save anything, find everything</p>
+
+            <div id="types">
+                <input type="radio" name="type" value="article" />Article
+                <input type="radio" name="type" value="video" /> Video
+                <input type="radio" name="type" value="pdf" />PDF
+                <input type="radio" name="type" value="tweet" /> Tweet
+            </div>
+
             <button id="saveBtn">Save</button>
         </div>
         <script src="popup.js"></script>
